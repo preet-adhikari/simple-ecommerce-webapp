@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');@charset "UTF-8";
 
 /*!
  * Bootstrap v4.5.2 (https://getbootstrap.com/)
@@ -34,8 +34,8 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: "Nunito", sans-serif;
-  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-family: 'Montserrat', sans-serif;
+
 }
 
 *,
@@ -10899,3 +10899,18 @@ a.text-dark:focus {
   }
 }
 
+.background-photo{
+    background-image: url('https://source.unsplash.com/4TBSG2Oqu0Q');
+
+    background-repeat:no-repeat;
+    background-size:cover;
+    height: 100vh;
+    width: 100%;
+}
+
+.blur{
+    /*background: rgba(255, 255, 255, 0.2);*/
+    backdrop-filter: blur(8px);
+    height: 100vh;
+
+}
