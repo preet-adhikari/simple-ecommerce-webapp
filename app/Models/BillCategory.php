@@ -6,14 +6,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Category extends Model
+class BillCategory extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name'];
+    protected $guarded = [];
 
-    public function brand(): HasMany
+    public function bill(): HasMany
     {
-        return $this->hasMany(Brands::class);
+        return $this->hasMany(Bill::class);
     }
+
 }

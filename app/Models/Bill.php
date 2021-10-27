@@ -6,16 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Product extends Model
+class Bill extends Model
 {
     use HasFactory;
+
     protected $guarded = ['id'];
-    protected $with = ['brands'];
 
-    public function brand(): BelongsTo
+    public function billCategory(): BelongsTo
     {
-        return $this->belongsTo(Brands::class,'brand_id');
+        return $this->belongsTo(BillCategory::class,'bill_category_id');
     }
-
-
 }

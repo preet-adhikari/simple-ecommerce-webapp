@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Customer extends Model
+class Payment extends Model
 {
     use HasFactory;
 
-    public function payment(){
-        return $this->hasMany(Payment::class);
+    public function customer(){
+        return $this->belongsTo(Customer::class,'customer_id');
     }
 }
