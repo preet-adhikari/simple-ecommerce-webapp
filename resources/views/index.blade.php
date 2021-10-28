@@ -73,8 +73,30 @@
 
 
     <section class="p-3">
-        <h2 class="text-center text-capitalize">Products</h2>
+        <h2 class="text-center text-capitalize">Categories</h2>
+        <div class="container">
 
+                <div class="row">
+                    @foreach($categories as $key => $item)
+                        <div class="col-md-6">
+                            <a href="#" class="text-white">
+                                <div class="card bg-dark text-white">
+                                    <img src="{{asset('img/electronics.jpg')}}" alt="" class="card-img-top">
+                                    <div class="card-img-overlay">
+                                        <h5 class="card-title">{{$item->name}}</h5>
+                                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, velit.</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        @if($key %  2 == 1)
+                            <br>
+                        @endif
+                    @endforeach
+                </div>
+            <br>
+
+        </div>
     </section>
 
 @endsection

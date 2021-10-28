@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BillController;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,10 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
+Route::get('/admin', function () {
+    return view('admin.home');
 })->middleware('auth');
 
 Route::view('home','home')->middleware('auth');
-Route::get('bill',[BillController::class,'show'])->name('bill');
-Route::post('bills',[BillController::class,'add'])->name('billAdd');
+//Route::get('bill',[BillController::class,'show'])->name('bill');
+//Route::post('bills',[BillController::class,'add'])->name('billAdd');

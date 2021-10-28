@@ -24,6 +24,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
 <body>
     <div id="app">
@@ -87,6 +88,15 @@
             </div>
         </div>
     </div>
+    <!-- Footer -->
+    <footer class="p-5 bg-dark text-white text-center fixed-bottom">
+        <div class="container">
+            <p class="lead">Copyright &copy; 2021 WebKart Private Limited. All rights reserved.</p>
+            <a href="#" class="ml-auto p-5">
+                <i class="bi bi-arrow-up-circle h1"></i>
+            </a>
+        </div>
+    </footer>
     @yield('javascripts')
 </body>
 </html>

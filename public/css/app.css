@@ -10944,3 +10944,9 @@ a.text-dark:focus {
 .carousel-caption{
     color: #1a202c;
 }
+
+.card-img-top{
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}

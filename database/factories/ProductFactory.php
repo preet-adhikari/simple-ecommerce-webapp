@@ -25,8 +25,8 @@ class ProductFactory extends Factory
         return [
             'brand_id' => Brands::factory(),
             'name' => ucfirst($this->faker->unique()->word()),
-            'stock' => $this->faker->numberBetween(0,1000),
-            'price' => $this->faker->numberBetween(0,20000),
+            'stock' => $this->faker->numberBetween(0,100),
+            'price' => $this->faker->numberBetween(0,200),
             'image' => $this->faker->image(public_path('storage\images'),640,480,null,false)
         ];
     }
