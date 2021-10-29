@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BillController;
+use App\Http\Controllers\CategoryController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
@@ -22,3 +23,8 @@ Route::get('/admin', function () {
 Route::view('home','home')->middleware('auth');
 //Route::get('bill',[BillController::class,'show'])->name('bill');
 //Route::post('bills',[BillController::class,'add'])->name('billAdd');
+
+Route::group(['prefix' => 'admin','middleware' => 'auth'], function (){
+    Route::get('/destroyCategory/{id}',[CategoryController::class,'destroy'])->name('category.Destroy');
+    Route::resource('category',CategoryController::class,['except' => 'destroy']);
+});
