@@ -25,10 +25,16 @@
                                     <div class="form-group">
                                         <label for="name">Enter Category Name</label>
                                         <input type="text" name="category_name" placeholder="Enter the name for a new category" id="category_name" class="form-control" >
+                                        @if($errors->has('category_name'))
+                                            <span class="text-danger">{{ $errors->first('category_image') }}</span>
+                                        @endif
                                     </div>
                                     <div class="form-group">
                                         <label for="category_image">Choose an image for your category</label>
                                         <input type="file" name="category_image" class="form-control">
+                                        @if($errors->has('category_image'))
+                                            <span class="text-danger">{{ $errors->first('category_image') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="card-footer">

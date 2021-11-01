@@ -6,6 +6,7 @@ use App\Models\Category;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use function PHPUnit\Framework\fileExists;
 
 class CategoryController extends Controller
 {
@@ -86,20 +87,22 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'category_name' => 'required|max:155|unique:categories,name',
-            'category_image' => 'required|mimes:jpg,png,jpeg|max:5048'
+            'category_name' => 'required|max:155',
+            'category_image' => 'mimes:jpg,png,jpeg|max:5048'
         ]);
         $category = Category::where('id','=',$id)->first();
-        $imageName = public_path('images/category_images') . $request->category_image;
-        if (File::exists($imageName)){
-            File::delete($imageName);
+        if ($request->hasFile('category_image')){
+            $imageName = public_path('images\category_images\\') . $category->image;
+            if(File::exists($imageName)){
+                File::delete($imageName);
+            }
+            $file = $request->file('category_image');
+            $filename = time() . '-' . $request->category_name . '.' . $request->category_image->extension();
+            $file->move(public_path('images\category_images'),$filename);
+            $category->image = $filename;
         }
-        $file = $request->file('category_image');
-        $filename = time() . '-' . $request->category_name . '.' . $request->category_image->extension();
-        $file->move(public_path('images/category_images'),$filename);
-        $category->image = $filename;
         $category->name = $request->category_name;
-        $category->update();
+        $category->save();
         return redirect('/admin/category');
     }
 

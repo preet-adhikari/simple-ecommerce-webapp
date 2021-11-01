@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BillController;
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
@@ -27,4 +28,6 @@ Route::view('home','home')->middleware('auth');
 Route::group(['prefix' => 'admin','middleware' => 'auth'], function (){
     Route::get('/destroyCategory/{id}',[CategoryController::class,'destroy'])->name('category.Destroy');
     Route::resource('category',CategoryController::class,['except' => 'destroy']);
+    Route::get('/deleteBrand/{id}',[BrandController::class,'delete'])->name('brand.delete');
+    Route::resource('brands',BrandController::class);
 });

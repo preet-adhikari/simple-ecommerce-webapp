@@ -26,10 +26,16 @@
                                     <div class="form-group">
                                         <label for="name">Edit Category Name</label>
                                         <input type="text" name="category_name" placeholder="Edit the name for a new category" id="category_name" class="form-control" value="{{$category->name}}" >
+                                        @if($errors->has('category_name'))
+                                            <span class="text-danger">{{ $errors->first('category_name') }}</span>
+                                        @endif
                                     </div>
                                     <div class="form-group">
                                         <label for="category_image">Choose an image for your category</label>
                                         <input type="file" name="category_image" class="form-control">
+                                        @if($errors->has('category_image'))
+                                            <span class="text-danger">{{ $errors->first('category_image') }}</span>
+                                        @endif
                                         <img src="{{asset('images/category_images/'.$category->image)}}" alt="" class="img-fluid">
                                     </div>
                                 </div>
