@@ -71,6 +71,30 @@
                     </ul>
                 </li>
 
+                <li class="nav-item menu-open">
+                    <a href="#" class="nav-link active">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Products
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('product.index')}}" class="nav-link active">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>View Products</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('product.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add Product</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

@@ -21,3 +21,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('getCategory',[APIController::class,'getCategories'])->name('categories.get');
 Route::get('getBrands',[APIController::class,'getBrands'])->name('brands.get');
+Route::get('getProducts',[APIController::class,'getProducts'])->name('products.get');
