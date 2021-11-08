@@ -118,4 +118,10 @@ class BrandController extends Controller
         return redirect('/admin/brands');
     }
 
+    public function viewBrands($name,$id){
+        $brands = Brands::where('category_id','=',$id)->get();
+        $category_name = $name;
+        return view('ecommerce.brands',compact('brands','category_name'));
+    }
+
 }

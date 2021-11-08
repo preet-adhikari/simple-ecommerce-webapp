@@ -43,10 +43,13 @@ Route::group(['prefix' => 'admin','middleware' => 'auth'], function (){
 Route::get('/customer/login',[CustomerController::class,'login'])->name('customer.login')->middleware('customer.auth');
 Route::post('/customer/loginCheck',[CustomerController::class,'loginCheck'])->name('customer.loginCheck');
 Route::get('/customer/register',[CustomerController::class,'register'])->name('customer.register')->middleware('customer.auth');
-Route::post('customer/logout',[CustomerController::class,'logout'])->name('customer.logout');
+Route::post('customer/logout',[CustomerController::class,'logout'])->name('customer.logout')->middleware('customer.auth');
 Route::resource('customer', CustomerController::class);
 
 Route::get('/', function (){
     $categories = Category::all();
     return view('index',compact('categories'));
 })->middleware('customer.auth');
+
+Route::get('/category/viewBrand/{name}/{id}',[BrandController::class,'viewBrands'])->name('category.viewBrand');
+Route::get('/brand/viewProduct/{name}/{id}',[ProductController::class,'viewProduct'])->name('brand.viewProduct');

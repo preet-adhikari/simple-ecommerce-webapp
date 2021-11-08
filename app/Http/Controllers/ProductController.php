@@ -81,4 +81,12 @@ class ProductController extends Controller
         $product->delete();
         return redirect('/admin/product');
     }
+
+    //View products
+    public function viewProduct($name,$id){
+        $products = Product::where('brand_id','=',$id)->get();
+        $brand_name = $name;
+        return view('ecommerce.products',compact('products','brand_name'));
+
+    }
 }

@@ -79,7 +79,7 @@
                 <div class="row">
                     @foreach($categories as $key => $item)
                         <div class="col-md-6">
-                            <a href="#" class="text-white">
+                            <a href="{{route('category.viewBrand',['name' => $item->name, 'id' => $item->id])}}" class="text-white">
                                 <div class="card bg-dark text-white">
                                     <img src="{{asset('img/electronics.jpg')}}" alt="" class="card-img-top">
                                     <div class="card-img-overlay">
