@@ -53,3 +53,5 @@ Route::get('/', function (){
 
 Route::get('/category/viewBrand/{name}/{id}',[BrandController::class,'viewBrands'])->name('category.viewBrand');
 Route::get('/brand/viewProduct/{name}/{id}',[ProductController::class,'viewProduct'])->name('brand.viewProduct');
+Route::get('/viewProduct/addToCart/{id}',[ProductController::class,'getAddToCart'])->name('product.addToCart');
+Route::get('/shopping-cart',[ProductController::class,'shoppingCart'])->name('product.ShoppingCart');

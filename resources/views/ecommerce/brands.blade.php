@@ -10,7 +10,7 @@
                         <a href="{{route('brand.viewProduct',['name' => $item->name, 'id' => $item->id])}}">
                             <div class="card bg-white text-dark">
                                 <img src="{{asset('images/brand_images/'.$item->logo)}}" class="img-fluid w-50" alt="">
-                                <div class="card-img-overlay">
+                                <div class="card-body">
                                     <div class="card-title">
                                         {{$item->name}}
                                     </div>

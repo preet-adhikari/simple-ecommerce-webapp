@@ -10901,18 +10901,17 @@ a.text-dark:focus {
 }
 
     .background-photo{
-        background-image: url('https://source.unsplash.com/Tl8mDaue_II');
-
-        background-repeat:no-repeat;
-        background-size:cover;
-        height: 100vh;
-        width: 100%;
+        background: url('https://source.unsplash.com/Tl8mDaue_II') no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
     }
 
 .blur{
     /*background: rgba(255, 255, 255, 0.2);*/
-    backdrop-filter: blur(8px);
-    height: 100vh;
+    backdrop-filter: blur(60px);
+
 
 }
 

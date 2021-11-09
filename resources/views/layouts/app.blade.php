@@ -55,10 +55,21 @@
                                     <a class="nav-link" href="{{route('customer.register')}}">{{ __('Register') }}</a>
                                 </li>
                         @else
+                            <li class="nav-item mr-2">
+                                <a href="{{route('product.ShoppingCart')}}" class="text-white">
+                                    <i class="bi bi-bag-plus-fill">
+                                        <span class="badge">
+                                            {{\Illuminate\Support\Facades\Session::has('cart') ? \Illuminate\Support\Facades\Session::get('cart')->totalQty : ''}}
+                                        </span>
+                                    </i>
+                                </a>
+
+                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     hello
                                 </a>
+
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('customer.logout') }}"
@@ -85,6 +96,7 @@
 
             </div>
         </div>
+
     </div>
     <!-- Footer -->
     <footer class="p-5 bg-dark text-white text-center fixed-bottom">

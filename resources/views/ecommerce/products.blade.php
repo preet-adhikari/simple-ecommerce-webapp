@@ -10,7 +10,7 @@
                         <a href="#">
                             <div class="card bg-white text-dark">
                                 <img src="{{asset('images/product_images/'.$item->image)}}" class="img-fluid w-50" alt="">
-                                <div class="card-img-overlay">
+                                <div class="card-body">
                                     <div class="card-title">
                                         {{$item->name}}
                                     </div>
@@ -19,16 +19,14 @@
                                 </div>
                             </div>
                         </a>
+                        <br>
+                        <div class="container">
+                            <a href="{{route('product.addToCart',['id' => $item->id])}}" class="btn btn-success">Add to cart</a>
+                        </div>
                     </div>
                 @endforeach
             </div>
             <br>
-            <div class="row">
-                <div class="container">
-                    <button class="btn btn-outline-success">Add to Cart</button>
-                </div>
-
-            </div>
         </div>
 
     </section>

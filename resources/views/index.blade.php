@@ -82,7 +82,7 @@
                             <a href="{{route('category.viewBrand',['name' => $item->name, 'id' => $item->id])}}" class="text-white">
                                 <div class="card bg-dark text-white">
                                     <img src="{{asset('img/electronics.jpg')}}" alt="" class="card-img-top">
-                                    <div class="card-img-overlay">
+                                    <div class="card-body">
                                         <h5 class="card-title">{{$item->name}}</h5>
                                         <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, velit.</p>
                                     </div>
@@ -90,7 +90,7 @@
                             </a>
                         </div>
                         @if($key %  2 == 1)
-                            <br>
+                            <div style="margin-top: 2rem"></div>
                         @endif
                     @endforeach
                 </div>
@@ -98,6 +98,7 @@
 
         </div>
     </section>
+
 
 @endsection
 
