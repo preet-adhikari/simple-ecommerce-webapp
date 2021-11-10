@@ -34,5 +34,47 @@ class Cart
         $this->totalQty++;
         $this->totalPrice += $item->price;
     }
+
+    public function reduce($item,$id){
+        $storedItem = [
+            'qty' => 0,
+            'price' => $item->price,
+            'item' => $item
+        ];
+        if ($this->items){
+            if (array_key_exists($id, $this->items)){
+                $storedItem = $this->items[$id];
+            }
+        }
+        if ($storedItem['qty']  > 1){
+            $storedItem['qty']--;
+            $storedItem['price'] = $item->price * $storedItem['qty'];
+            $this->items[$id] = $storedItem;
+            $this->totalQty--;
+            $this->totalPrice -= $item->price;
+        }
+        else{
+            unset($this->items[$id]);
+            $this->totalQty -= $storedItem['qty'];
+            $this->totalPrice -= $item->price;
+        }
+    }
+
+    public function remove($item,$id){
+        $storedItem = [
+            'qty' => 0,
+            'price' => $item->price,
+            'item' => $item
+        ];
+        if ($this->items){
+            if (array_key_exists($id, $this->items)){
+                $storedItem = $this->items[$id];
+            }
+        }
+        unset($this->items[$id]);
+        $this->totalQty -= $storedItem['qty'];
+        $this->totalPrice -= $item->price;
+
+    }
 }
 

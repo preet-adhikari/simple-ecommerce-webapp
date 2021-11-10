@@ -2,7 +2,8 @@
 
 @section('content')
     <section class="p-3">
-    @if(\Illuminate\Support\Facades\Session::has('cart'))
+    @if(\Illuminate\Support\Facades\Session::has('cart') && (\Illuminate\Support\Facades\Session::get('cart')->items != null))
+
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 col-md-6">
@@ -12,13 +13,17 @@
                                 <span class="badge">{{$item['qty']}}</span>
                                 <strong>{{ $item['item']['name'] }}</strong>
                                 <span class="label label-success">${{$item['price']}}</span>
-                                <div class="btn-group">
-                                    <button class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">Options <span class="caret"></span></button>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">Reduce by 1</a></li>
-                                        <li><a href="#">Remove product</a></li>
-                                    </ul>
-                                </div>
+                                <span class="badge">
+                                    <a href="{{route('product.removeFromCart',['id' => $item['item']['id']])}}" class="btn btn-outline-danger"><i class="bi bi-x-circle"></i></a>
+                                </span>
+                                <span class="d-flex justify-content-end">
+                                    <a href="{{route('product.addToCart',['id' => $item['item']['id']])}}" class="btn btn-outline-secondary">
+                                        <i class="bi bi-plus-circle"></i>
+                                    </a>
+                                    <a href="{{route('product.reduceFromCart',['id' => $item['item']['id']])}}" class="btn btn-outline-danger">
+                                        <i class="bi bi-dash-circle"></i>
+                                    </a>
+                                </span>
                             </li>
                         @endforeach
                     </ul>

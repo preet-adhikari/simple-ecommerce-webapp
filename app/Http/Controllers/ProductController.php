@@ -102,6 +102,29 @@ class ProductController extends Controller
         return back();
     }
 
+    //Reduce from cart
+    public function getReduceFromCart(Request $request,$id){
+        $product = Product::find($id);
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->reduce($product,$product->id);
+        Session::put('cart',$cart);
+        return back();
+    }
+
+    //Remove cart
+    public function getRemoveFromCart(Request $request,$id){
+        $product = Product::find($id);
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->remove($product,$product->id);
+        Session::put('cart',$cart);
+        if (Session::get('cart')->items == null){
+            Session::get('cart')->totalPrice = 0;
+        }
+        return back();
+    }
+
     //View Shopping Cart
     public function shoppingCart(){
         if (!Session::has('cart')){

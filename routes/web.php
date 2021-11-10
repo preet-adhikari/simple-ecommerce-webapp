@@ -53,5 +53,13 @@ Route::get('/', function (){
 
 Route::get('/category/viewBrand/{name}/{id}',[BrandController::class,'viewBrands'])->name('category.viewBrand');
 Route::get('/brand/viewProduct/{name}/{id}',[ProductController::class,'viewProduct'])->name('brand.viewProduct');
-Route::get('/viewProduct/addToCart/{id}',[ProductController::class,'getAddToCart'])->name('product.addToCart');
+
+Route::group(['prefix' => 'viewProduct'], function (){
+    Route::get('addToCart/{id}',[ProductController::class,'getAddToCart'])->name('product.addToCart');
+    Route::get('reduceFromCart/{id}',[ProductController::class,'getReduceFromCart'])->name('product.reduceFromCart');
+    Route::get('removeFromCart/{id}',[ProductController::class,'getRemoveFromCart'])->name('product.removeFromCart');
+
+});
 Route::get('/shopping-cart',[ProductController::class,'shoppingCart'])->name('product.ShoppingCart');
+
+
