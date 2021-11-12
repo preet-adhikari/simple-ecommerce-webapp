@@ -17,12 +17,16 @@
                                     <a href="{{route('product.removeFromCart',['id' => $item['item']['id']])}}" class="btn btn-outline-danger"><i class="bi bi-x-circle"></i></a>
                                 </span>
                                 <span class="d-flex justify-content-end">
+                                    @if( $item['item']->stock > 0)
                                     <a href="{{route('product.addToCart',['id' => $item['item']['id']])}}" class="btn btn-outline-secondary">
                                         <i class="bi bi-plus-circle"></i>
                                     </a>
+                                    @endif
+
                                     <a href="{{route('product.reduceFromCart',['id' => $item['item']['id']])}}" class="btn btn-outline-danger">
                                         <i class="bi bi-dash-circle"></i>
                                     </a>
+
                                 </span>
                             </li>
                         @endforeach
