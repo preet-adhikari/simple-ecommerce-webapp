@@ -16,6 +16,15 @@
         </div>
     </div>
 </section>
+    @if(\Illuminate\Support\Facades\Session::has('success'))
+        <div class="container">
+            <div class="row">
+                <div id="charge-message" class="alert alert-success">
+                    {{\Illuminate\Support\Facades\Session::get('success')}}
+                </div>
+            </div>
+        </div>
+    @endif
 
 {{--    Newsletter--}}
     <section class="bg-secondary p-5">

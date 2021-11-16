@@ -61,5 +61,8 @@ Route::group(['prefix' => 'viewProduct'], function (){
 
 });
 Route::get('/shopping-cart',[ProductController::class,'shoppingCart'])->name('product.ShoppingCart');
+//Checkout
+Route::get('/checkout',[ProductController::class,'getCheckout'])->name('checkout');
+Route::post('/checkout',[ProductController::class,'postCheckout'])->name('checkout.post');
 
 

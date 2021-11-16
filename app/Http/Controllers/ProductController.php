@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Brands;
 use App\Models\Cart;
+use App\Models\Customer;
+use App\Models\Payment;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
+use Stripe\Charge;
+use Stripe\Stripe;
 
 class ProductController extends Controller
 {
@@ -136,5 +140,52 @@ class ProductController extends Controller
            'products' => $cart->items,
             'totalPrice' => $cart->totalPrice,
         ]);
+    }
+
+    //Get Checkout
+    public function getCheckout(){
+        if (!Session::has('cart')){
+            return view('ecommerce.shoppingCart');
+        }
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+        $total = $cart->totalPrice;
+        return view('ecommerce.checkout',['total' => ($total * 1.13)]);
+    }
+    //After Checkout
+    public function postCheckout(Request $request){
+        if (!Session::has('cart')){
+            return redirect()->route('ecommerce.shoppingCart');
+        }
+        $oldCart = Session::get('cart');
+        $cart =   new Cart($oldCart);
+
+        Stripe::setApiKey('sk_test_51JQUhrJ20uYlh3SGK8zCvucvZI3Ia2ZiPOikbZxU0MOODwvRyAdvaGbSqEmQF6ou5o2DpVyhPGEE9DXOWpNIKhWO007pCPxCHv');
+//        dd($request->input('stripeToken'));
+        try{
+            Charge::create(array(
+                "amount" => ($cart->totalPrice * 100)* 1.13,
+                "currency" => "usd",
+                "source" => "tok_mastercard",
+                "description" => "Test Charge"
+            ));
+//            \Stripe\PaymentIntent::create([
+//               'amount' => ($cart->totalPrice)*1.13,
+//               'currency' => 'usd',
+//                'payment_method_types' => [
+//                    'card'
+//                ]
+        }catch(\Exception $e){
+            return redirect()->route('checkout')->with('error',$e->getMessage());
+        }
+//        $payment = new Payment();
+//        $customer = Customer::where('email','=',Session::get('customer_logged_in'))->first();
+//        $payment->customer_id = $customer->id;
+//        $payment->payment_type = 'card';
+//        $payment->provider = 'Master Card';
+//        $payment->account_no = $request->input('accountNumber');
+//        dd($customer->id);
+        Session::forget('cart');
+        return redirect('/')->with('success','Payment has been successfully made');
     }
 }

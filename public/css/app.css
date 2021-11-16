@@ -10949,3 +10949,11 @@ a.text-dark:focus {
     height: 15vw;
     object-fit: cover;
 }
+
+.form-container{
+    background: #fff;
+    padding: 2rem;
+    border-radius: 1em;
+    box-shadow: 0 0 1rem 0 #000000;
+
+}
