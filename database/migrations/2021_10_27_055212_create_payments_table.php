@@ -18,8 +18,10 @@ class CreatePaymentsTable extends Migration
             $table->foreignId('customer_id');
             $table->string('payment_type');
             $table->string('provider');
-            $table->bigInteger('account_no');
-            $table->dateTime('expiry');
+            $table->text('cart');
+            $table->text('address');
+            $table->string('name');
+            $table->string('payment_id');
             $table->timestamps();
         });
     }

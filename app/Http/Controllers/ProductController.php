@@ -163,12 +163,22 @@ class ProductController extends Controller
         Stripe::setApiKey('sk_test_51JQUhrJ20uYlh3SGK8zCvucvZI3Ia2ZiPOikbZxU0MOODwvRyAdvaGbSqEmQF6ou5o2DpVyhPGEE9DXOWpNIKhWO007pCPxCHv');
 //        dd($request->input('stripeToken'));
         try{
-            Charge::create(array(
+            $charge = Charge::create(array(
                 "amount" => ($cart->totalPrice * 100)* 1.13,
                 "currency" => "usd",
                 "source" => "tok_mastercard",
                 "description" => "Test Charge"
             ));
+            $payment = new Payment();
+            $customer = Customer::where('email','=',Session::get('customer_logged_in'))->first();
+            $payment->customer_id = $customer->id;
+            $payment->payment_type = 'card';
+            $payment->provider = 'Stripe';
+            $payment->cart = serialize($cart);
+            $payment->address = $request->input('address');
+            $payment->name = $request->input('name');
+            $payment->payment_id = $charge->id;
+            $payment->save();
 //            \Stripe\PaymentIntent::create([
 //               'amount' => ($cart->totalPrice)*1.13,
 //               'currency' => 'usd',
@@ -178,12 +188,7 @@ class ProductController extends Controller
         }catch(\Exception $e){
             return redirect()->route('checkout')->with('error',$e->getMessage());
         }
-//        $payment = new Payment();
-//        $customer = Customer::where('email','=',Session::get('customer_logged_in'))->first();
-//        $payment->customer_id = $customer->id;
-//        $payment->payment_type = 'card';
-//        $payment->provider = 'Master Card';
-//        $payment->account_no = $request->input('accountNumber');
+
 //        dd($customer->id);
         Session::forget('cart');
         return redirect('/')->with('success','Payment has been successfully made');
