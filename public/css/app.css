@@ -10906,12 +10906,13 @@ a.text-dark:focus {
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
+        min-height: 90vh;
     }
 
 .blur{
     /*background: rgba(255, 255, 255, 0.2);*/
     backdrop-filter: blur(60px);
-
+    min-height: 90vh;
 
 }
 
@@ -10927,7 +10928,14 @@ a.text-dark:focus {
     top: auto;
     bottom: -70px;
 }
-
+footer{
+    position: relative;
+}
+.arrow-right{
+    position: absolute;
+    right: 20px;
+    top: 40px;
+}
 .carousel-indicators li{
     background: #000;
     border-radius: 50%;
@@ -10956,4 +10964,15 @@ a.text-dark:focus {
     border-radius: 1em;
     box-shadow: 0 0 1rem 0 #000000;
 
+}
+
+.category-hide{
+    display: none;
+}
+
+.show-content{
+    display: block !important;
+}
+.show-less{
+    display: none;
 }

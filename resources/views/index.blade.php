@@ -87,7 +87,8 @@
 
                 <div class="row">
                     @foreach($categories as $key => $item)
-                        <div class="col-md-6">
+                        @if($loop->iteration <=12)
+                        <div class="col-md-6 p-3">
                             <a href="{{route('category.viewBrand',['name' => $item->name, 'id' => $item->id])}}" class="text-white">
                                 <div class="card bg-dark text-white">
                                     <img src="{{asset('img/electronics.jpg')}}" alt="" class="card-img-top">
@@ -98,12 +99,27 @@
                                 </div>
                             </a>
                         </div>
-                        @if($key %  2 == 1)
-                            <div style="margin-top: 2rem"></div>
+                        @else
+                            <div class="col-md-6 p-3 category-hide">
+                                <a href="{{route('category.viewBrand',['name' => $item->name, 'id' => $item->id])}}" class="text-white">
+                                    <div class="card bg-dark text-white">
+                                        <img src="{{asset('img/electronics.jpg')}}" alt="" class="card-img-top">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{$item->name}}</h5>
+                                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, velit.</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
                         @endif
                     @endforeach
+
                 </div>
-            <br>
+            <div class="d-flex justify-content-center">
+                <button class="btn btn-primary p-3 justify-content-center text-bold content-toggle">View More Categories</button>
+                <button class="btn btn-primary p-3 justify-content-center text-bold show-less">Show less</button>
+            </div>
+                <br>
 
         </div>
     </section>
@@ -114,6 +130,7 @@
 @section('javascripts')
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="{{asset('js/hideContent.js')}}"></script>
     <script>
         jQuery(document).ready( function ($) {
             $('.owl-carousel').owlCarousel({

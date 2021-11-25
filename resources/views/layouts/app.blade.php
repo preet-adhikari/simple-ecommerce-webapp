@@ -93,7 +93,7 @@
 
                     @yield('content')
 {{--                Login modal--}}
-
+                <div style="margin-bottom: 140px;"></div>
             </div>
         </div>
 
@@ -102,6 +102,8 @@
     <footer class="p-5 bg-dark text-white text-center fixed-bottom">
         <div class="container">
             <p class="lead">Copyright &copy; 2021 WebKart Private Limited. All rights reserved.</p>
+        </div>
+        <div class="arrow-right">
             <a href="#" class="ml-auto p-5">
                 <i class="bi bi-arrow-up-circle h1"></i>
             </a>
