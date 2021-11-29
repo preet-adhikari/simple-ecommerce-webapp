@@ -152,6 +152,16 @@ class ProductController extends Controller
         $total = $cart->totalPrice;
         return view('ecommerce.checkout',['total' => ($total * 1.13)]);
     }
+    //Stock reduction after checkout
+    public function stockReduction($cart){
+        foreach ($cart->items as $item ){
+            $item_id = $item['item']->id;
+            $boughtStock = $item['qty'];
+            $oldStock = Product::find($item_id);
+            $newStock = $oldStock->stock - $boughtStock;
+            Product::where('id',$item_id)->update(['stock' => $newStock]);
+        }
+    }
     //After Checkout
     public function postCheckout(Request $request){
         if (!Session::has('cart')){
@@ -188,9 +198,11 @@ class ProductController extends Controller
         }catch(\Exception $e){
             return redirect()->route('checkout')->with('error',$e->getMessage());
         }
-
+        $this->stockReduction($cart);
 //        dd($customer->id);
         Session::forget('cart');
         return redirect('/')->with('success','Payment has been successfully made');
     }
+
+
 }

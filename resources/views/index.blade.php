@@ -91,7 +91,7 @@
                         <div class="col-md-6 p-3">
                             <a href="{{route('category.viewBrand',['name' => $item->name, 'id' => $item->id])}}" class="text-white">
                                 <div class="card bg-dark text-white">
-                                    <img src="{{asset('img/electronics.jpg')}}" alt="" class="card-img-top">
+                                    <img src="{{asset('images/category_images/'.$item->image)}}" alt="" class="card-img-top">
                                     <div class="card-body">
                                         <h5 class="card-title">{{$item->name}}</h5>
                                         <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, velit.</p>
@@ -103,7 +103,7 @@
                             <div class="col-md-6 p-3 category-hide">
                                 <a href="{{route('category.viewBrand',['name' => $item->name, 'id' => $item->id])}}" class="text-white">
                                     <div class="card bg-dark text-white">
-                                        <img src="{{asset('img/electronics.jpg')}}" alt="" class="card-img-top">
+                                        <img src="{{asset('images/category_images/'.$item->image)}}" alt="" class="card-img-top">
                                         <div class="card-body">
                                             <h5 class="card-title">{{$item->name}}</h5>
                                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, velit.</p>

@@ -35,7 +35,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-6 col-md-6">
-                    <strong>Taxable Total : {{$totalPrice * 1.13}} </strong>
+                    <strong>Taxable Total : ${{$totalPrice * 1.13}} </strong>
                 </div>
             </div>
             <hr>

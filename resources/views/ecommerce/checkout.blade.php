@@ -55,4 +55,7 @@
 @section('javascripts')
     <script src="https://js.stripe.com/v3/"></script>
     <script src="{{asset('js/checkoutStripe.js')}}"></script>
+    <script>
+        console.log('val');
+    </script>
 @endsection

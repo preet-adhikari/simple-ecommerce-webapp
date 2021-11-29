@@ -14,14 +14,22 @@
                                     <div class="card-title">
                                         {{$item->name}}
                                     </div>
-                                    <p class="card-text">{{$item->stock}} remaining in stock</p><br>
+                                    <p class="card-text">
+                                        @if($item->stock>0)
+                                        {{$item->stock}} remaining in stock
+                                        @else
+                                            <span class="alert">Sold Out!</span>
+                                        @endif
+                                    </p><br>
                                     <p class="card-text">Price : <span class="font-weight-bold">$ {{$item->price}}</span></p>
                                 </div>
                             </div>
                         </a>
                         <br>
                         <div class="container">
+                            @if($item->stock>0)
                             <a href="{{route('product.addToCart',['id' => $item->id])}}" class="btn btn-success">Add to cart</a>
+                            @endif
                         </div>
                     </div>
                 @endforeach
